@@ -161,23 +161,30 @@
         </div>
         <p class="footer__copy">&#169; 2026 جميع الحقوق محفوظة</p>
     </footer>
-
-    <script src="./assets/js/scrollreveal.min.js"></script>
-    <script src="./assets/js/mixitup.min.js"></script>
-    <script src="./assets/js/main.js"></script>
-
-   <script src="./assets/js/scrollreveal.min.js"></script>
+<script src="./assets/js/scrollreveal.min.js"></script>
     <script src="./assets/js/mixitup.min.js"></script>
     <script src="./assets/js/main.js"></script>
 
     <script>
-        /* تفعيل Mixitup فقط هنا لأنها تحتاج تحديد الـ Container */
+        // حل جذري: إظهار العناصر فوراً إذا لم يعمل الأنيميشن خلال 3 ثوانٍ
+        setTimeout(() => {
+            document.body.style.opacity = "1";
+            document.body.style.visibility = "visible";
+            // إظهار أي عنصر قد يكون مختفياً بسبب ScrollReveal
+            const hiddenElements = document.querySelectorAll('[style*="visibility: hidden"]');
+            hiddenElements.forEach(el => {
+                el.style.visibility = "visible";
+                el.style.opacity = "1";
+            });
+        }, 3000);
+
+        // تفعيل فلترة الأعمال
         try {
             mixitup('.work__container', {
                 selectors: { target: '.work__card' },
                 animation: { enable: false }
             });
-        } catch (e) { console.log("Mixitup initialized"); }
+        } catch (e) { console.log("Mixitup Ready"); }
     </script>
 </body>
 </html>
