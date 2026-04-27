@@ -166,33 +166,18 @@
     <script src="./assets/js/mixitup.min.js"></script>
     <script src="./assets/js/main.js"></script>
 
+   <script src="./assets/js/scrollreveal.min.js"></script>
+    <script src="./assets/js/mixitup.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+
     <script>
+        /* تفعيل Mixitup فقط هنا لأنها تحتاج تحديد الـ Container */
         try {
             mixitup('.work__container', {
                 selectors: { target: '.work__card' },
                 animation: { enable: false }
             });
         } catch (e) { console.log("Mixitup initialized"); }
-
-        const linkWork = document.querySelectorAll('.work__item');
-        function activeWork(){
-            linkWork.forEach(l => l.classList.remove('active-work'));
-            this.classList.add('active-work');
-        }
-        linkWork.forEach(l => l.addEventListener('click', activeWork));
-
-        if (typeof ScrollReveal !== 'undefined') {
-            const sr = ScrollReveal({
-                origin: 'top',
-                distance: '60px',
-                duration: 2000,
-                delay: 200,
-            });
-            sr.reveal('.home__data, .about__img, .skills__data', {});
-            sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img', {delay: 400});
-            sr.reveal('.home__social', {delay: 500});
-            sr.reveal('.work__card', {interval: 200});
-        }
     </script>
 </body>
 </html>
