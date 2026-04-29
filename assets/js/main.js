@@ -10,16 +10,20 @@ const showMenu = (toggleId, navId) =>{
     }
 }
 showMenu('nav-toggle','nav-menu')
-
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
+/*==================== إغلاق القائمة عند الضغط على الروابط ====================*/
+// لاحظ هنا استخدمت nav_link بشرطة واحدة كما هي في الـ HTML الخاص بك
+const navLink = document.querySelectorAll('.nav_link')
 
 function linkAction(){
     const navMenu = document.getElementById('nav-menu')
-    navMenu.classList.remove('show')
+    // إزالة كلاس show لإخفاء القائمة
+    if(navMenu){
+        navMenu.classList.remove('show')
+    }
 }
-navLink.forEach(n => n.addEventListener('click', linkAction))
 
+// إضافة المستمع لكل رابط
+navLink.forEach(n => n.addEventListener('click', linkAction))
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll('section[id]')
 
