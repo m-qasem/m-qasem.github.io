@@ -134,7 +134,6 @@ img {
   box-shadow: 0 1px 4px rgba(212, 175, 55, 0.1);
   backdrop-filter: blur(10px);
 }
-
 /*===== NAV =====*/
 .nav {
   height: var(--header-height);
@@ -143,38 +142,41 @@ img {
   align-items: center;
   font-weight: var(--font-semi);
 }
+
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
     top: var(--header-height);
-    /* نرجعها لليسار */
-    left: -100%; 
-    right: auto; /* تأكيد إلغاء جهة اليمين */
+    left: -100%; /* القائمة تظهر من اليسار في العربي */
     width: 80%;
     height: 100%;
     padding: 2rem;
-    background-color: var(--body-color); 
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    background-color: #1a1a1a;
     transition: 0.5s;
-    z-index: var(--z-fixed);
   }
 }
 
-/* كود الإظهار - نعدله ليدفع من اليسار */
-.show {
-  left: 0 !important;
-  right: auto !important;
-}
 .nav__item {
   margin-bottom: var(--mb-4);
 }
-/* 1. تنسيق الرابط الأساسي */
+
 .nav__link {
   position: relative;
-  color: var(--title-color);
-  transition: .3s;
-  font-size: var(--normal-font-size);
-  padding: 0.5rem 0;
+  color: #fff;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__link:hover::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0.18rem;
+  right: 0; /* في العربي نستخدم right */
+  top: 2rem;
+  background-color: var(--first-color);
 }
 
 .nav__logo {
@@ -183,10 +185,13 @@ img {
 }
 
 .nav__toggle {
-  /* لون زر القائمة يتغير مع الثيم */
-  color: var(--title-color); 
+  color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.show {
+  left: 0;
 }
 /*===== HOME =====*/
 /* --- الإعدادات العامة (الكمبيوتر) --- */
@@ -223,10 +228,18 @@ img {
   bottom: 5rem;
 }
 
+/* --- تلوين أيقونات التواصل الاجتماعي بالأصفر --- */
 .home__social-icon {
-  font-size: 1.5rem;
-  color: #d4af37;
-  transition: .3s;
+    font-size: 1.5rem;
+    color: #d4af37 !important; /* اللون الذهبي الذي تفضله */
+    transition: .3s;
+}
+
+/* حركة بسيطة عند تمرير الماوس فوق الأيقونة */
+.home__social-icon:hover {
+    color: #b3922d !important; /* لون ذهبي أغمق قليلاً عند التمرير */
+    transform: translateY(-3px); /* ترتفع للأعلى قليلاً */
+    display: inline-block;
 }
 .home__blob {
   fill: var(--first-color);
@@ -260,6 +273,7 @@ img {
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 25%);
     mask-image: linear-gradient(to top, transparent 0%, black 25%);
 }
+
   .home__data {
     margin-top: 1rem;
   }
@@ -275,6 +289,22 @@ img {
   .home__title {
     font-size: 1.8rem !important; /* حجم العنوان المناسب للجوال */
   }
+}
+/* --- تنسيق زر تواصل معي --- */
+.home__button {
+    margin-top: 2.5rem !important; /* لدفعه للأسفل بعيداً عن النص */
+    padding: 1rem 2rem;
+    background-color: var(--first-color);
+    color: var(--second-color) !important; /* الأسود الملكي ليتناسب مع الذهبي */
+    font-weight: var(--font-semi);
+    border-radius: .5rem;
+    transition: .3s;
+}
+
+.home__button:hover {
+    background-color: var(--first-color-alt);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); /* ظل ذهبي خفيف عند التمرير */
+    transform: translateY(-3px);
 }
 /* BUTTONS */
 .button {
@@ -742,7 +772,7 @@ body.light-theme .l-header {
 
 /* --- ضبط القائمة في الهاتف --- */
 @media screen and (max-width: 767px) {
-    .nav__menu {
+.nav__menu {
         position: fixed;
         top: var(--header-height);
         left: -100%; /* تخرج من اليسار */
@@ -753,7 +783,6 @@ body.light-theme .l-header {
         transition: .4s;
         box-shadow: 3px 0 10px rgba(0,0,0,0.1);
     }
-    
     /* جعل خلفية القائمة بيضاء في الوضع الفاتح */
     body.light-theme .nav__menu {
         background-color: #ffffff;
@@ -889,73 +918,66 @@ body.light-theme .l-header {
     gap: 1.5rem;
     justify-content: center;
 }
+/* --- تنسيق معرض الأعمال الفخم (النسخة النهائية) --- */
 
-/* كروت الأعمال - تظهر بالأبيض في الفاتح والأسود في الداكن */
+/* 1. الحاوية الأساسية */
+.work__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* صورتين للتابلت والشاشات المتوسطة */
+    gap: 2rem;
+    justify-content: center;
+    align-items: start;
+}
+
+/* 2. كرت العمل */
 .work__card {
-  background-color: var(--container-color);
-  padding: 1.25rem;
-  border-radius: 1.5rem;
-  transition: .4s;
-  /* ظل خفيف ليعطي فخامة */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+    background-color: var(--container-color);
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: transform .4s, box-shadow .4s, border-color .4s; /* تنعيم الحركة */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* تأثير الحوم (Hover) الموحد */
 .work__card:hover {
-  transform: translateY(-10px);
-  border-color: var(--first-color);
+    transform: translateY(-0.5rem);
+    border-color: var(--first-color);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
+
+/* 3. تنسيق الصورة (لمنع التشويه) */
 .work__img {
+    width: 100%;
+    height: 250px; /* توحيد الارتفاع للفخامة */
+    object-fit: cover; /* يمنع التمطط */
     border-radius: 1rem;
     margin-bottom: 0.75rem;
 }
 
+/* 4. النصوص */
 .work__title {
     font-size: var(--normal-font-size);
     font-weight: var(--font-medium);
     margin-bottom: 0.5rem;
+    color: var(--title-color);
 }
 
-/* للهواتف الصغيرة: صورة واحدة في السطر */
-@media screen and (max-width: 576px) {
-    .work__container {
-        grid-template-columns: 1fr;
-    }
-}
+/* --- تعديلات الشاشات (Responsive) --- */
 
-/* للشاشات الكبيرة: 3 صور في السطر */
-@media screen and (min-width: 992px) {
+/* للهواتف (عرض فخم بملء الشاشة) */
+@media screen and (max-width: 767px) {
     .work__container {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr !important; /* صورة واحدة فقط لتركيز العين */
+        gap: 2.5rem; /* مسافة مريحة بين الكروت */
     }
-}/* --- تنسيق شبكة معرض الأعمال --- */
-.work__container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* صورتين في السطر للشاشات المتوسطة */
-    gap: 2rem;
-    justify-content: center;
 }
 
 /* للشاشات الكبيرة (الكمبيوتر) */
 @media screen and (min-width: 992px) {
     .work__container {
-        grid-template-columns: repeat(3, 1fr); /* 3 صور في السطر */
+        grid-template-columns: repeat(3, 1fr) !important; /* 3 صور متناسقة */
     }
-}
-
-/* للهواتف */
-@media screen and (max-width: 576px) {
-    .work__container {
-        grid-template-columns: 1fr; /* صورة واحدة فقط */
-    }
-}
-.work__card {
-    transition: .3s;
-}
-
-.work__card:hover {
-    transform: translateY(-0.5rem); /* يرتفع للأعلى قليلاً */
-    box-shadow: 0 12px 20px rgba(0,0,0,0.2); /* يظهر ظل عميق */
 }
 /* 1. اللون الافتراضي (بما أن الموقع ليلي افتراضياً فالاسم يجب أن يكون أبيض) */
 .nav__name, .nav__logo span {
@@ -1128,4 +1150,242 @@ body.light-theme .work__card {
 .nav__link:hover::after, 
 .active-link::after {
     width: 100% !important; /* يتمدد بعرض الكلمة فقط */
+}
+/* --- عرض الأعمال صورتين بجانب بعض في الهاتف --- */
+@media screen and (max-width: 767px) {
+    .work__container {
+        /* هذا السطر هو السر: يجعلها صورتين */
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 1rem !important; /* تقليل المسافة لتناسب حجم الشاشة */
+        padding: 0 0.5rem !important;
+    }
+
+    .work__card {
+        padding: 0.75rem !important; /* تقليل الحشو الداخلي للكارت */
+        border-radius: 1rem !important;
+    }
+
+    .work__img {
+        height: 150px !important; /* تقليل الارتفاع ليتناسب مع العرض الصغير */
+        border-radius: 0.75rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .work__title {
+        font-size: 0.8rem !important; /* تصغير الخط لكي لا ينزل لسطرين */
+        margin-bottom: 0.25rem !important;
+    }
+
+    .work__button {
+        font-size: 0.7rem !important;
+    }
+}
+
+/* للشاشات الكبيرة يظل كما هو 3 صور */
+@media screen and (min-width: 992px) {
+    .work__container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 2rem !important;
+    }
+}
+/* --- تنسيق زر تغيير اللغة --- */
+.nav__language {
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: var(--font-semi);
+    color: var(--title-color);
+    border: 1px solid var(--first-color); /* إطار ذهبي نحيف */
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: .3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem; /* مسافة عن زر الشمس */
+}
+
+.nav__language:hover {
+    background-color: var(--first-color);
+    color: #000;
+}
+
+/* لضمان تناسق الأزرار في الجوال */
+@media screen and (max-width: 767px) {
+    .nav__btns {
+        display: flex;
+        align-items: center;
+        column-gap: 0.75rem;
+    }
+}
+/* --- الحل الجذري والنهائي للألوان ومنع البنفسجي --- */
+
+/* استهداف مباشر وقوي لكل حالات الروابط في القائمة */
+.nav__menu ul li a, 
+.nav__menu ul li a:link, 
+.nav__menu ul li a:visited, 
+.nav__menu ul li a:active {
+    color: var(--title-color) !important; /* يجبره على الأبيض في الليل والأسود في النهار */
+    text-decoration: none !important;
+    opacity: 1 !important;
+}
+
+/* حالة تمرير الماوس فقط هي التي تتغير للأصفر */
+.nav__menu ul li a:hover {
+    color: var(--first-color) !important;
+}
+
+/* الرابط النشط يبقى أصفر */
+.nav__menu ul li a.active-link {
+    color: var(--first-color) !important;
+}
+
+/* التأكد من أن الخطوط لا تتأثر بزيارة الروابط */
+a:visited {
+    color: inherit;
+}
+/* --- التنسيق المتوافق مع نظام التبديل في موقعك --- */
+
+/* 1. الحالة الافتراضية للموقع (الوضع الغامق) */
+@media screen and (max-width: 767px) {
+    .nav__menu {
+        background-color: #0b0b0b !important; /* أسود صلب */
+        opacity: 1 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid #d4af37;
+    }
+}
+
+/* 2. الحالة عند تفعيل الوضع الفاتح (وجود كلاس light-theme) */
+body.light-theme .nav__menu {
+    background-color: #ffffff !important; /* أبيض صلب */
+    background: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* 3. لضمان ظهور النصوص بوضوح في الوضع الفاتح */
+body.light-theme .nav__link {
+    color: #000000 !important;
+}
+/* تصغير النصوص الإنجليزية في وضع الجوال */
+@media screen and (max-width: 767px) {
+    /* العنوان الرئيسي (Designing beyond Reality) */
+    .home__title {
+        font-size: 1.5rem !important; 
+        line-height: 1.2;
+    }
+
+    /* نص التخصص (Architectural Visualization & Branding) */
+    .home__subtitle, 
+    .home__description {
+        font-size: 0.85rem !important;
+        margin-top: 0.5rem;
+    }
+
+    /* اسمك المكتوب بالإنجليزية (M. Abd-ul Salam) */
+    .nav__logo, 
+    .home__data h1 {
+        font-size: 1.1rem !important;
+    }
+
+    /* أي نصوص فرعية أخرى بالإنجليزية */
+    .section__subtitle {
+        font-size: 0.75rem !important;
+    }
+}
+/* الحل النهائي لترتيب الصورة فوق النصوص في الجوال */
+@media screen and (max-width: 767px) {
+    .home__container {
+        display: grid !important; /* التأكد من تفعيل نظام الشبكة */
+    }
+
+    .home__content {
+        display: grid !important;
+        /* جعل المحتوى يتكون من عمود واحد فقط */
+        grid-template-columns: 1fr !important; 
+        row-gap: 2rem;
+    }
+
+    /* إعطاء الصورة الرقم 1 لتصعد للأعلى */
+    .home__img {
+        order: 1 !important;
+        display: block !important;
+        margin: 0 auto !important; /* توسيط الصورة */
+    }
+
+    /* إعطاء النصوص الرقم 2 لتنزل للأسفل */
+    .home__data {
+        order: 2 !important;
+        text-align: center !important; /* توسيط النصوص */
+    }
+
+    /* إعطاء الأزرار الاجتماعية الرقم 3 لتكون في الأخير */
+    .home__social {
+        order: 3 !important;
+    }
+}
+/* موازنة أيقونات الهيدر بناءً على كود الـ HTML الخاص بك */
+@media screen and (max-width: 767px) {
+    .nav__btns {
+        display: flex !important;
+        align-items: center !important; /* هذا السطر يضمن المحاذاة العمودية السنتر */
+        column-gap: 1.25rem !important; /* مسافة متساوية بين الأيقونات الثلاث */
+    }
+
+    /* توحيد سلوك كل عنصر داخل الحاوية (اللغة، الثيم، التوجل) */
+    .nav__language, 
+    .change-theme, 
+    .nav__toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 !important; /* إلغاء أي هوامش تلقائية */
+        padding: 0 !important;
+        cursor: pointer;
+        height: 100% !important; /* لضمان تساوي الارتفاع */
+    }
+
+    /* ضبط نص اللغة (EN) ليكون على نفس مستوى الأيقونات */
+    .lang-text {
+        font-size: 0.85rem !important;
+        font-weight: 700;
+        line-height: 1 !important;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* موازنة حجم أيقونات المكتبة */
+    .change-theme, 
+    .nav__toggle i {
+        font-size: 1.25rem !important;
+        line-height: 1 !important;
+    }
+}
+/* تنسيق احترافي لزر تغيير اللغة */
+@media screen and (max-width: 767px) {
+    .nav__language {
+        border: 1px solid var(--first-color); /* إطار بلون الهوية الخاص بك */
+        padding: 4px 8px !important;           /* مساحة داخلية للنص */
+        border-radius: 4px;                  /* زوايا منحنية بسيطة */
+        transition: 0.3s;
+        background-color: transparent;
+    }
+
+    .lang-text {
+        font-size: 0.75rem !important;        /* حجم أصغر وأرشق */
+        font-weight: 600 !important;
+        color: var(--title-color);           /* لون النص يتبع لون العناوين */
+        text-transform: uppercase;           /* حروف كبيرة */
+        letter-spacing: 1px;                 /* تباعد بسيط بين الحروف */
+    }
+
+    /* تأثير عند الضغط أو التحويم في الوضع الفاتح */
+    body.light-theme .nav__language {
+        border-color: #000;
+    }
+
+    /* تغيير الخلفية عند تبديل الوضع ليعطي تميزاً */
+    body.dark-theme .nav__language {
+        background-color: rgba(212, 175, 55, 0.1); /* خلفية ذهبية خفيفة جداً */
+    }
 }

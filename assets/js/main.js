@@ -80,4 +80,49 @@ themeButton.addEventListener('click', () => {
     // حفظ الوضع الحالي ليتذكره المتصفح
     localStorage.setItem('selected-theme', document.body.classList.contains(lightTheme) ? 'light' : 'dark')
     localStorage.setItem('selected-icon', themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon')
-})
+})// ... (كود الثيم يبقى كما هو)
+/* --- كود تبديل اللغة الاحترافي --- */
+const langBtn = document.getElementById('language-button');
+const langText = langBtn.querySelector('.lang-text');
+
+langBtn.addEventListener('click', () => {
+    // 1. فحص الاتجاه الحالي (إذا كان يمين يعني عربي)
+    const isCurrentlyArabic = document.body.dir === 'rtl' || document.body.dir === '';
+    
+    // 2. تحديد اللغة الجديدة والاتجاه الجديد
+    const newLang = isCurrentlyArabic ? 'en' : 'ar';
+    const newDir = isCurrentlyArabic ? 'ltr' : 'rtl';
+
+    // 3. تطبيق التغيير على الصفحة
+    document.body.dir = newDir;
+    document.documentElement.lang = newLang;
+
+    // 4. تغيير نص الزر (يظهر EN عندما تكون الواجهة عربية والعكس)
+    langText.textContent = isCurrentlyArabic ? 'AR' : 'EN';
+
+    // 5. تحديث النصوص (مع دعم الألوان والـ Placeholders)
+    const elements = document.querySelectorAll('.translate, [data-en]');
+    elements.forEach(el => {
+        const newText = el.getAttribute(`data-${newLang}`);
+        const newPlaceholder = el.getAttribute(`data-${newLang}-placeholder`);
+
+        // تحديث النصوص (العناوين، الأزرار، والفقرات)
+        if (newText) {
+            // إذا كان العنصر زر إرسال نغير الـ value
+            if (el.tagName === 'INPUT' && el.type === 'button') {
+                el.value = newText;
+            } else {
+                // استخدام innerHTML للحفاظ على الـ span الملون
+                el.innerHTML = newText;
+            }
+        }
+
+        // تحديث الـ Placeholder للحقول
+        if (newPlaceholder) {
+            el.setAttribute('placeholder', newPlaceholder);
+        }
+    });
+
+    // 6. ضبط الخطوط (Cairo للعربي و Poppins للإنجليزي)
+    document.body.style.fontFamily = isCurrentlyArabic ? "'Poppins', sans-serif" : "'Cairo', sans-serif";
+});
