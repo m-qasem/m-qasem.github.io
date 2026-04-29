@@ -1,14 +1,17 @@
-# Portfolio Responsive Complete
-## [Watch it on youtube](https://youtu.be/AKNvTxWOdKw)
-### Portfolio Responsive Complete
+# MOHAMMED DESIGNER | Official Portfolio
+## [Explore My Work](https://cutt.ly/Mohammed-Designer)
 
-- Responsive Personal Portfolio Website HTML CSS & JavaScript.
-- Contains animations when scrolling.
-- Smooth scrolling in each section.
-- Developed first with the Mobile First methodology, then for desktop.
-- Compatible with all mobile devices and with a beautiful and pleasant user interface.
+### معرض أعمال التصميم الجرافيكي والثلاثي الأبعاد
+مرحباً بك في عالم **MOHAMMED DESIGNER**. هذا الموقع هو المساحة التي أستعرض فيها شغفي وإبداعي في دمج الفن بالتقنية، مع التركيز على تقديم تجربة بصرية فخمة واحترافية.
 
-💙 Join the channel to see more videos like this. [Bedimcode](https://www.youtube.com/@Bedimcode)
+*   **الإبداع البصري**: استعراض لمشاريع التصميم الجرافيكي والهوية البصرية باستخدام Adobe Illustrator.
+*   **العوالم الثلاثية**: مشاريع وتصاميم 3D احترافية تم تطويرها باستخدام Blender و 3ds Max و Unreal Engine.
+*   **أداء فائق السرعة**: موقع محسن تقنياً باستخدام خاصية `loading="lazy"` وضغط الصور لضمان سلاسة التصفح.
+*   **تصميم متجاوب**: واجهة مستخدم (UI) عصرية متوافقة تماماً مع جميع الهواتف الذكية وأجهزة الكمبيوتر.
 
-![preview img](/preview.png)
+---
 
+### الأدوات والمهارات البرمجية:
+*   **Design Tools**: Blender, 3ds Max, Unreal Engine, Adobe Illustrator & Photoshop.
+*   **Web Technologies**: HTML5, CSS3 (BEM Methodology), JavaScript & Cloudflare.
+*   **Optimization**: Image Lazy Loading & SEO Friendly Structure.
