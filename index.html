@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     <title>محمد عبد السلام | معرض الأعمال</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="l-header" id="header">
@@ -14,36 +16,57 @@
             <div>
                 <a href="index.html" class="nav__logo" style="display: flex; align-items: center; gap: 10px;">
                     <img src="./assets/img/logo.png" alt="Logo" class="nav__logo-img" style="width: 35px; height: auto;">
-                    <span class="nav__user-name nav__name">محمد عبد السلام</span>
+                    <span class="nav__user-name nav__name" data-ar="محمد عبد السلام" data-en="M. Abd-ul Salam">محمد عبد السلام</span>
                 </a>
             </div>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#home" class="nav__link active-link">الرئيسية</a></li>
-                    <li class="nav__item"><a href="#about" class="nav__link">عني</a></li>
-                    <li class="nav__item"><a href="#skills" class="nav__link">المهارات</a></li>
-                    <li class="nav__item"><a href="#work" class="nav__link">الأعمال</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">تواصل معي</a></li>
+                    <li class="nav__item"><a href="#home" class="nav_link active-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+<li class="nav__item"><a href="#about" class="nav_link" data-ar="عني" data-en="About Me">عني</a></li>
+<li class="nav__item"><a href="#skills" class="nav_link" data-ar="المهارات" data-en="Skills">المهارات</a></li>
+<li class="nav__item"><a href="#work" class="nav_link" data-ar="الأعمال" data-en="Portfolio">الأعمال</a></li>
+<li class="nav__item"><a href="#contact" class="nav_link" data-ar="تواصل معي" data-en="Contact">تواصل معي</a></li>
                 </ul>
             </div>
 
             <div class="nav__btns">
-                <i class='bx bx-moon change-theme' id="theme-button"></i>
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
-            </div>
+    <div class="nav__language" id="language-button" title="Change Language">
+        <span class="lang-text">EN</span> </div>
+
+    <i class='bx bx-moon change-theme' id="theme-button"></i>
+    
+    <div class="nav__toggle" id="nav-toggle">
+        <i class='bx bx-grid-alt'></i>
+    </div>
+</div>
         </nav>
     </header>
+<main class="l-main">
+    <section class="home bd-grid" id="home">
+        <div class="home__data">
+            <!-- العنوان الرئيسي مع دعم اللغتين -->
+            <h1 class="home__title">
+                <span data-ar="نصمم ما يتجاوز" data-en="Designing beyond">نصمم ما يتجاوز</span> 
+                <span style="color: #d4af37;" data-ar="الواقع" data-en="Reality">الواقع</span>
+            </h1>
 
-    <main class="l-main">
-        <section class="home bd-grid" id="home">
-            <div class="home__data">
-                <h1 class="home__title">نصمم ما يتجاوز <span style="color: #d4af37;">الواقع</span></h1>
-                <p class="home__subtitle">إظهار معماري وهويات بصرية بأبعاد ثلاثية</p>
-            </div>
+            <!-- النص الفرعي (التعريف بك) -->
+            <p class="home__subtitle">
+                <span data-ar="محمد عبد السلام | إظهار معماري وهويات بصرية" 
+                      data-en="Mohammed Abd-ul Salam | Architectural Visualization & Branding">
+                      محمد عبد السلام | إظهار معماري وهويات بصرية بأبعاد ثلاثية
+                </span>
+            </p>
 
+            <!-- زر التواصل (اختياري إذا أردت إضافته) -->
+            <a href="https://wa.me/967775595988" target="_blank" class="button home__button" 
+   data-ar="تواصل معي" 
+   data-en="Contact Me" 
+   style="margin-top: 2rem; display: inline-block;">
+   تواصل معي
+</a>
+        </div>
             <div class="home__social">
                 <a href="#" target="_blank" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
                 <a href="#" target="_blank" class="home__social-icon"><i class='bx bxl-behance'></i></a>
@@ -62,129 +85,325 @@
                 </svg>
             </div>
         </section>
+<section class="about section" id="about">
+    <h2 class="section-title translate" 
+        data-ar="عن المصمم" 
+        data-en="About Me">
+        عن المصمم
+    </h2>
 
-        <section class="about section" id="about">
-            <h2 class="section-title">عن المصمم</h2>
-            <div class="about__container bd-grid">
-                <div class="about__img">
-                    <img src="./assets/img/about.png" alt="About">
-                </div>
-                <div>
-                    <h2 class="about__subtitle">رؤيـة <span style="color: #d4af37;">إبداعيـة</span></h2>
-                    <p class="about__text">
-                        خبير في <span style="color: #d4af37;">الإظهار المعماري</span> وتصميم الهويات البصرية. أدمج العلم بالفن لأجسّد مشاريعكم في أبعادها الثلاثية الأكثر واقعية.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="skills section" id="skills">
-            <h2 class="section-title">المهارات</h2>
-            <div class="skills__container bd-grid">
-                <div>
-                    <h2 class="skills__subtitle">محرّك <span style="color: #d4af37;">الواقع الرقمي</span></h2>
-                    <p class="skills__text">نسخّر أحدث التقنيات العالمية لنحول الرؤى الهندسية إلى واقع بصري فائق الدقة.</p>
-                    
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class='bx bxs-cube skills__icon'></i>
-                            <span class="skills__name">3D Modeling & Rendering (Max / Vray)</span>
-                        </div>
-                        <div class="skills__bar" style="width: 95%; background-color: #d4af37;"></div>
-                        <div><span class="skills__percentage">95%</span></div>
-                    </div>
-
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <img src="https://cdn.simpleicons.org/autocad/d4af37" width="20" height="20" alt="AutoCAD">
-                            <span class="skills__name">Architectural Drafting (AutoCAD)</span>
-                        </div>
-                        <div class="skills__bar" style="width: 90%; background-color: #d4af37;"></div>
-                        <div><span class="skills__percentage">90%</span></div>
-                    </div>
-                </div>
-                <div>
-                    <img src="./assets/img/work3.jpg" alt="Skills Image" class="skills__img">
-                </div>
-            </div>
-        </section>
-
-        <section class="work section" id="work">
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <span class="section-subtitle" style="display: block; color: #d4af37; font-weight: 600;">أحدث أعمالي</span>
-                <h2 class="section-title">معرض <span style="color: #d4af37;">الإبداع</span></h2>
-            </div>
-
-            <div class="work__filters">
-                <span class="work__item active-work" data-filter="all">الكل</span>
-                <span class="work__item" data-filter=".arch">تصميم معماري</span>
-                <span class="work__item" data-filter=".graphic">جرافيك وشعارات</span>
-            </div>
-
-            <div class="work__container bd-grid">
-                <div class="work__card mix arch">
-                    <img src="./assets/img/work1.jpg" alt="" class="work__img">
-                    <h3 class="work__title">تصميم فيلا مودرن</h3>
-                    <a href="./assets/img/work1.jpg" class="work__button" target="_blank">استكشاف <i class='bx bx-right-arrow-alt'></i></a>
-                </div>
-                <div class="work__card mix graphic">
-                    <img src="./assets/img/work2.jpg" alt="" class="work__img">
-                    <h3 class="work__title">تصميم شعار احترافي</h3>
-                    <a href="./assets/img/work2.jpg" class="work__button" target="_blank">استكشاف <i class='bx bx-right-arrow-alt'></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact section" id="contact">
-            <h2 class="section-title">تواصل معي</h2>
-            <div class="contact__container bd-grid">
-                <form action="" class="contact__form">
-                    <div class="contact__info_manual" style="margin-bottom: 2rem; text-align: center;">
-                        <p dir="ltr"><i class='bx bxs-phone'></i> +967 775 595 988</p>
-                        <p><i class='bx bxs-envelope'></i> vip.axe.man@gmail.com</p>
-                    </div>
-                    <input type="text" placeholder="الاسم" class="contact__input">
-                    <input type="email" placeholder="البريد الإلكتروني" class="contact__input">
-                    <textarea placeholder="رسالتك" class="contact__input" rows="5"></textarea>
-                    <input type="button" value="إرسال" class="contact__button button">
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p class="footer__title">محمد عبد السلام</p>
-        <div class="footer__social">
-            <a href="#" class="footer__icon"><i class='bx bxl-facebook'></i></a>
-            <a href="#" class="footer__icon"><i class='bx bxl-instagram'></i></a>
-            <a href="#" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+    <div class="about__container bd-grid">
+        <div class="about__img">
+            <img src="./assets/img/about.png" alt="About">
         </div>
-        <p class="footer__copy">&#169; 2026 جميع الحقوق محفوظة</p>
-    </footer>
-<script src="./assets/js/scrollreveal.min.js"></script>
+
+        <div>
+            <h2 class="about__subtitle translate" 
+                data-ar="رؤيـة إبداعيـة" 
+                data-en="Creative Vision">
+                رؤيـة <span style="color: #d4af37;">إبداعيـة</span>
+            </h2>
+            
+            <p class="about__text translate" 
+               data-ar="خبير في الإظهار المعماري وتصميم الهويات البصرية. أدمج العلم بالفن لأجسّد مشاريعكم في أبعادها الثلاثية الأكثر واقعية." 
+               data-en="Expert in Architectural Visualization and Visual Identity design. I merge science with art to embody your projects in their most realistic 3D dimensions.">
+                خبير في <span style="color: #d4af37;">الإظهار المعماري</span> وتصميم الهويات البصرية. أدمج العلم بالفن لأجسّد مشاريعكم في أبعادها الثلاثية الأكثر واقعية.
+            </p>
+        </div>
+    </div>
+</section>
+            <section class="skills section" id="skills">
+    <h2 class="section-title translate" 
+        data-ar="المهارات" 
+        data-en="Skills">
+        المهارات
+    </h2>
+
+    <div class="skills__container bd-grid">          
+        <div>
+            <h2 class="skills__subtitle translate" 
+                data-ar="محرّك <span style='color: #d4af37;'>الواقع الرقمي</span>" 
+                data-en="Digital <span style='color: #d4af37;'>Reality Engine</span>">
+                محرّك <span style="color: #d4af37;">الواقع الرقمي</span>
+            </h2>
+
+            <p class="skills__text translate" 
+               data-ar="نسخّر أحدث التقنيات العالمية لنحول الرؤى الهندسية إلى <span style='color: #d4af37;'>واقع بصري</span> فائق الدقة، يضمن لك أعلى معايير الإتقان في التنفيذ والإظهار المعماري." 
+               data-en="We harness the latest global technologies to transform engineering visions into a high-precision <span style='color: #d4af37;'>visual reality</span>, ensuring the highest standards of mastery in execution and architectural visualization.">
+                نسخّر أحدث التقنيات العالمية لنحول الرؤى الهندسية إلى <span style="color: #d4af37;">واقع بصري</span> فائق الدقة، يضمن لك أعلى معايير الإتقان في التنفيذ والإظهار المعماري.
+            </p>
+                        <div class="skills__data">
+    <div class="skills__names">
+         <img src="assets/img/3dsmax-logo.png" ...>
+        <span class="skills__name">3D Modeling & Rendering (Max / Vray)</span>
+    </div>
+    <div class="skills__bar" style="width: 95%; background-color: #d4af37;"></div>
+    <div><span class="skills__percentage">95%</span></div>
+</div>
+
+<div class="skills__data">
+    <div class="skills__names">
+        <img src="https://cdn.simpleicons.org/autocad/d4af37" width="20" height="20" class="skills__img-icon" alt="AutoCAD">
+        <span class="skills__name">Architectural Drafting (AutoCAD)</span>
+    </div>
+    <div class="skills__bar" style="width: 90%; background-color: #d4af37;"></div>
+    <div><span class="skills__percentage">90%</span></div>
+</div>
+
+<div class="skills__data">
+    <div class="skills__names">
+        <img src="https://cdn.simpleicons.org/blender/d4af37" width="22" height="22" class="skills__img-icon" alt="Blender">
+        <span class="skills__name">3D Creative Design (Blender)</span>
+    </div>
+    <div class="skills__bar" style="width: 80%; background-color: #d4af37;"></div>
+    <div><span class="skills__percentage">80%</span></div>
+</div>
+
+<div class="skills__data">
+    <div class="skills__names">
+        <i class='bx bxs-pen skills__icon'></i>
+        <span class="skills__name">Visual Identity Design (AI / PS)</span>
+    </div>
+    <div class="skills__bar" style="width: 85%; background-color: #d4af37;"></div>
+    <div><span class="skills__percentage">85%</span></div>
+</div>
+                    </div>
+                    
+                    <div>              
+                        <img src="assets/img/work3.jpg" alt="Skills Image" class="skills__img">
+                    </div>
+                </div>
+            </section>
+
+      <section class="work section" id="work">
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="section-subtitle translate" 
+              style="display: block; color: #d4af37; font-weight: 600;"
+              data-ar="أحدث أعمالي" 
+              data-en="My Latest Work">
+              أحدث أعمالي
+        </span>
+        
+        <h2 class="section-title translate"
+            data-ar="معرض <span style='color: #d4af37;'>الإبداع</span>"
+            data-en="Creative <span style='color: #d4af37;'>Portfolio</span>">
+            معرض <span style="color: #d4af37;">الإبداع</span>
+        </h2>
+    </div>
+
+    <div class="work__filters">
+        <span class="work__item active-work translate" 
+              data-filter="all"
+              data-ar="الكل" 
+              data-en="All">
+              الكل
+        </span>
+        
+        <span class="work__item translate" 
+              data-filter=".arch"
+              data-ar="تصميم معماري" 
+              data-en="Architecture">
+              تصميم معماري
+        </span>
+        
+        <span class="work__item translate" 
+              data-filter=".graphic"
+              data-ar="جرافيك وشعارات" 
+              data-en="Branding & Logos">
+              جرافيك وشعارات
+        </span>
+            </div>
+
+          <div class="work__container bd-grid">
+    <!-- المشروع 1: فيلا -->
+    <div class="work__card mix arch">
+        <img src="./assets/img/work1.jpg" alt="" class="work__img">
+        <h3 class="work__title translate" data-ar="تصميم فيلا مودرن" data-en="Modern Villa Design">تصميم فيلا مودرن</h3>
+        <a href="./assets/img/work1.jpg" class="work__button translate" 
+           data-fancybox="project1" 
+           data-ar="استكشاف المشروع" data-en="Explore Project"
+           data-caption="Modern Villa Design - Main View">
+            استكشاف المشروع <i class='bx bx-right-arrow-alt'></i>
+        </a>
+        <div style="display:none">
+            <a href="./assets/img/work1_3.jpg" data-fancybox="project1" data-caption="Night View"></a>
+            <a href="./assets/img/work1_2.jpg" data-fancybox="project1" data-caption="Before Post-production"></a>
+        </div>
+    </div>
+
+    <!-- المشروع 2: صالة -->
+    <div class="work__card mix arch">
+        <img src="assets/img/Hall1.jpg" alt="" class="work__img">
+        <h3 class="work__title translate" data-ar="تصميم صاله نيو كلاسيك" data-en="Neo-Classic Hall Design">تصميم صاله نيو كلاسيك</h3>
+        <a href="assets/img/Hall1.jpg" class="work__button translate" 
+           data-fancybox="project5" 
+           data-ar="استكشاف المشروع" data-en="Explore Project"
+           data-caption="Neo-Classic Hall Design - Main View">
+            استكشاف المشروع <i class='bx bx-right-arrow-alt'></i>
+        </a>
+        <div style="display:none">
+            <a href="assets/img/Hall-2.jpg" data-fancybox="project5" data-caption="Side View"></a>
+            <a href="assets/img/Hall-1.jpg" data-fancybox="project5" data-caption="Night View"></a>
+        </div>
+    </div>
+
+    <!-- المشروع 3: مجلس -->
+    <div class="work__card mix arch">
+        <img src="assets/img/decor1.jpg" alt="" class="work__img">
+        <h3 class="work__title translate" data-ar="تصميم مجلس حديث" data-en="Modern Majlis Design">تصميم مجلس حديث</h3>
+        <a href="assets/img/decor1.jpg" class="work__button translate" 
+           data-fancybox="project3" 
+           data-ar="استكشاف المشروع" data-en="Explore Project"
+           data-caption="Modern Majlis Design - Main View">
+            استكشاف المشروع <i class='bx bx-right-arrow-alt'></i>
+        </a>
+        <div style="display:none">
+            <a href="assets/img/decor2.jpg" data-fancybox="project3" data-caption="Side View"></a>
+            <a href="assets/img/decor3.jpg" data-fancybox="project3" data-caption="Night View"></a>
+        </div>
+    </div>
+
+    <!-- المشروع 4: كافي -->
+    <div class="work__card mix arch">
+        <img src="assets/img/caffe1.jpg" alt="" class="work__img">
+        <h3 class="work__title translate" data-ar="تصميم كافي حديث" data-en="Modern Cafe Design">تصميم كافي حديث</h3>
+        <a href="assets/img/caffe1.jpg" class="work__button translate" 
+           data-fancybox="project4" 
+           data-ar="استكشاف المشروع" data-en="Explore Project"
+           data-caption="Modern Cafe Design - Main View">
+            استكشاف المشروع <i class='bx bx-right-arrow-alt'></i>
+        </a>
+        <div style="display:none">
+            <a href="assets/img/caffe-1.jpg" data-fancybox="project4" data-caption="Side View 1"></a>
+            <a href="assets/img/caffe-2.jpg" data-fancybox="project4" data-caption="Side View 2"></a>
+            <a href="assets/img/caffe-3.jpg" data-fancybox="project4" data-caption="Night View"></a>
+        </div>
+    </div>
+
+    <!-- المشروع 5: شعار -->
+    <div class="work__card mix graphic">
+        <img src="./assets/img/work2.jpg" alt="" class="work__img">
+        <h3 class="work__title translate" data-ar="تصميم شعار احترافي" data-en="Professional Logo Design">تصميم شعار احترافي</h3>
+        <a href="./assets/img/work2.jpg" class="work__button translate" 
+           data-fancybox="project2" 
+           data-ar="استكشاف المشروع" data-en="Explore Project"
+           data-caption="Full Visual Identity">
+            استكشاف المشروع <i class='bx bx-right-arrow-alt'></i>
+        </a>
+        <div style="display:none">
+            <a href="./assets/img/work2_mockup.jpg" data-fancybox="project2" data-caption="Brand Identity Mockup"></a>
+        </div>
+    </div>
+</div>
+    
+</div>
+        </section>
+<section class="contact section" id="contact">
+    <h2 class="section-title translate" 
+        data-ar="تواصل معي" 
+        data-en="Contact Me">
+        تواصل معي
+    </h2>
+<div class="contact__container bd-grid">
+    <!-- 1. أضفنا الرابط الخاص بك هنا وتأكدنا من استخدام POST -->
+    <form action="https://formspree.io/f/xjgjneyq" method="POST" class="contact__form">
+        <div class="contact__info_manual" style="margin-bottom: 2rem; text-align: center;">
+            <p dir="ltr"><i class='bx bxs-phone'></i> +967 775 595 988</p>
+            <p><i class='bx bxs-envelope'></i> vip.axe.man@gmail.com</p>
+        </div>
+
+        <!-- 2. أضفنا خاصية name="name" وتأكدنا من وجود كلمة required للإلزام -->
+        <input type="text" 
+               name="name"
+               class="contact__input translate" 
+               data-ar-placeholder="الاسم" 
+               data-en-placeholder="Name" 
+               placeholder="الاسم" required>
+
+        <!-- 3. أضفنا خاصية name="email" -->
+        <input type="email" 
+               name="email"
+               class="contact__input translate" 
+               data-ar-placeholder="البريد الإلكتروني" 
+               data-en-placeholder="Email" 
+               placeholder="البريد الإلكتروني" required>
+
+        <!-- 4. أضفنا خاصية name="message" -->
+        <textarea name="message"
+                  class="contact__input translate" 
+                  data-ar-placeholder="رسالتك" 
+                  data-en-placeholder="Your Message" 
+                  placeholder="رسالتك" 
+                  rows="5" required></textarea>
+
+        <!-- 5. غيرنا النوع إلى submit لكي يتم تفعيل الإرسال -->
+        <input type="submit" 
+               class="contact__button button translate" 
+               data-ar="إرسال" 
+               data-en="Send" 
+               value="إرسال">
+    </form>
+    </div>
+</section>
+    </main>
+<footer class="footer">
+    <p class="footer__title translate" 
+       data-ar="محمد عبد السلام" 
+       data-en="M. Abd-ul Salam">
+       محمد عبد السلام
+    </p>
+
+    <div class="footer__social">
+        <a href="https://facebook.com/yourprofile" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+        <a href="https://instagram.com/yourprofile" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+        <a href="https://behance.net/yourprofile" class="footer__icon"><i class='bx bxl-behance'></i></a>
+    </div>
+
+    <p class="footer__copy translate" 
+       data-ar="&#169; 2026 جميع الحقوق محفوظة" 
+       data-en="&#169; 2026 All rights reserved">
+       &#169; 2026 جميع الحقوق محفوظة
+    </p>
+</footer>
+
+    <script src="./assets/js/scrollreveal.min.js"></script>
     <script src="./assets/js/mixitup.min.js"></script>
     <script src="./assets/js/main.js"></script>
 
     <script>
-        // حل جذري: إظهار العناصر فوراً إذا لم يعمل الأنيميشن خلال 3 ثوانٍ
-        setTimeout(() => {
-            document.body.style.opacity = "1";
-            document.body.style.visibility = "visible";
-            // إظهار أي عنصر قد يكون مختفياً بسبب ScrollReveal
-            const hiddenElements = document.querySelectorAll('[style*="visibility: hidden"]');
-            hiddenElements.forEach(el => {
-                el.style.visibility = "visible";
-                el.style.opacity = "1";
-            });
-        }, 3000);
-
-        // تفعيل فلترة الأعمال
         try {
             mixitup('.work__container', {
                 selectors: { target: '.work__card' },
                 animation: { enable: false }
             });
-        } catch (e) { console.log("Mixitup Ready"); }
+        } catch (e) { console.log("Mixitup initialized"); }
+
+        const linkWork = document.querySelectorAll('.work__item');
+        function activeWork(){
+            linkWork.forEach(l => l.classList.remove('active-work'));
+            this.classList.add('active-work');
+        }
+        linkWork.forEach(l => l.addEventListener('click', activeWork));
+
+        if (typeof ScrollReveal !== 'undefined') {
+            const sr = ScrollReveal({
+                origin: 'top',
+                distance: '60px',
+                duration: 2000,
+                delay: 200,
+            });
+            sr.reveal('.home__data, .about__img, .skills__data', {});
+            sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img', {delay: 400});
+            sr.reveal('.home__social', {delay: 500});
+            sr.reveal('.work__card', {interval: 200});
+        }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+  Fancybox.bind("[data-fancybox]", {
+    // إعدادات اختيارية لزيادة الفخامة
+    Transition: "fade",
+  });
+</script>
 </body>
 </html>
