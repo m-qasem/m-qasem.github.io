@@ -349,10 +349,12 @@ img {
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
     mask-image: linear-gradient(to top, transparent 0%, black 20%);
 }
-/* SKILLS */
 .skills__container {
-  row-gap: 2rem;
-  text-align: right;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* توزيع غير متماثل لتقليل مساحة الصورة */
+    column-gap: 2rem;
+    align-items: start;
+    text-align: right;
 }
 
 .skills__data {
@@ -911,22 +913,16 @@ body.light-theme .l-header {
     background-color: var(--first-color);
     color: #fff;
 }
-
-.work__container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* صورتين في السطر */
-    gap: 1.5rem;
-    justify-content: center;
-}
 /* --- تنسيق معرض الأعمال الفخم (النسخة النهائية) --- */
 
 /* 1. الحاوية الأساسية */
 .work__container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* صورتين للتابلت والشاشات المتوسطة */
+    grid-template-columns: repeat(2, 1fr); /* الافتراضي للتابلت */
     gap: 2rem;
     justify-content: center;
     align-items: start;
+    direction: rtl; /* ضمان الاتجاه العربي */
 }
 
 /* 2. كرت العمل */
@@ -935,41 +931,79 @@ body.light-theme .l-header {
     padding: 1.25rem;
     border-radius: 1.5rem;
     border: 1px solid rgba(212, 175, 55, 0.1);
-    transition: transform .4s, box-shadow .4s, border-color .4s; /* تنعيم الحركة */
+    transition: transform .4s, box-shadow .4s, border-color .4s;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: right;
 }
 
-/* تأثير الحوم (Hover) الموحد */
 .work__card:hover {
     transform: translateY(-0.5rem);
-    border-color: var(--first-color);
+    border-color: #d4af37;
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* 3. تنسيق الصورة (لمنع التشويه) */
+/* 3. تنسيق الصورة */
 .work__img {
     width: 100%;
-    height: 250px; /* توحيد الارتفاع للفخامة */
-    object-fit: cover; /* يمنع التمطط */
+    height: 250px;
+    object-fit: cover;
     border-radius: 1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
 }
 
-/* 4. النصوص */
+/* 4. النصوص والوصف */
 .work__title {
     font-size: var(--normal-font-size);
-    font-weight: var(--font-medium);
+    font-weight: 600;
     margin-bottom: 0.5rem;
-    color: var(--title-color);
+    color: #d4af37; /* لونك المفضل */
+}
+
+.work__description {
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    display: block;
+}
+
+/* 5. تنسيق الزر */
+.work__button {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.25rem;
+    color: #d4af37;
+    font-weight: 500;
+    font-size: var(--small-font-size);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.work__button i {
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.work__button:hover {
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+}
+
+.work__button:hover i {
+    transform: translateX(-5px); /* حركة السهم في RTL */
 }
 
 /* --- تعديلات الشاشات (Responsive) --- */
 
-/* للهواتف (عرض فخم بملء الشاشة) */
+/* للهواتف (S22 Ultra) */
 @media screen and (max-width: 767px) {
     .work__container {
-        grid-template-columns: 1fr !important; /* صورة واحدة فقط لتركيز العين */
-        gap: 2.5rem; /* مسافة مريحة بين الكروت */
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem;
+    }
+    
+    .work__img {
+        height: 220px; /* تقليل الارتفاع قليلاً للجوال */
     }
 }
 
@@ -1150,37 +1184,69 @@ body.light-theme .work__card {
 .nav__link:hover::after, 
 .active-link::after {
     width: 100% !important; /* يتمدد بعرض الكلمة فقط */
-}
-/* --- عرض الأعمال صورتين بجانب بعض في الهاتف --- */
+}/* --- عرض 3 بطائق احترافية في الهاتف --- */
 @media screen and (max-width: 767px) {
     .work__container {
-        /* هذا السطر هو السر: يجعلها صورتين */
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 1rem !important; /* تقليل المسافة لتناسب حجم الشاشة */
-        padding: 0 0.5rem !important;
+        grid-template-columns: repeat(3, 1fr) !important; 
+        gap: 0.35rem !important; /* مسافة صغيرة جداً بين البطائق */
+        padding: 0 0.2rem !important;
     }
 
     .work__card {
-        padding: 0.75rem !important; /* تقليل الحشو الداخلي للكارت */
-        border-radius: 1rem !important;
+        padding: 0.35rem !important; /* تقليل الحشو الداخلي للبطاقة */
+        border-radius: 0.6rem !important;
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* توحيد الطول لجميع البطائق */
+        background-color: var(--container-color);
     }
 
     .work__img {
-        height: 150px !important; /* تقليل الارتفاع ليتناسب مع العرض الصغير */
-        border-radius: 0.75rem !important;
-        margin-bottom: 0.5rem !important;
+        height: 65px !important; /* ارتفاع يتناسب مع عرض 3 بطائق */
+        border-radius: 0.4rem !important;
+        margin-bottom: 0.3rem !important;
     }
 
     .work__title {
-        font-size: 0.8rem !important; /* تصغير الخط لكي لا ينزل لسطرين */
-        margin-bottom: 0.25rem !important;
+        font-size: 0.55rem !important; /* تصغير العنوان */
+        font-weight: 700 !important;
+        margin-bottom: 0.2rem !important;
+        line-height: 1.1;
     }
 
+    .work__description {
+        display: block !important; /* إبقاء الوصف كما في صورتك */
+        font-size: 0.45rem !important; /* تصغير الوصف جداً ليناسب المساحة */
+        line-height: 1.2;
+        margin-bottom: 0.4rem !important;
+        color: var(--text-color);
+    }
+
+    /* تنسيق زر "عرض التفاصيل" الشفاف مثل الصورة */
     .work__button {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start; /* محاذاة النص لليمين/اليسار حسب اللغة */
+        font-size: 0.5rem !important;
+        color: var(--first-color) !important; /* لون ذهبي أو اللون الأساسي */
+        background: none !important; /* شفاف كما في الصورة */
+        padding: 0 !important;
+        margin-top: auto; /* دفع الزر لأسفل البطاقة */
+    }
+
+    .work__button i {
         font-size: 0.7rem !important;
+        margin-right: 2px;
+        transition: 0.3s;
+    }
+
+    /* قلب السهم في وضع العربي ليكون صحيحاً */
+    [dir="rtl"] .work__button i {
+        transform: rotate(180deg);
+        margin-left: 2px;
+        margin-right: 0;
     }
 }
-
 /* للشاشات الكبيرة يظل كما هو 3 صور */
 @media screen and (min-width: 992px) {
     .work__container {
@@ -1448,4 +1514,219 @@ body.en .skills__bar {
 [lang="en"] .home__data, 
 body.en .home__data {
     text-align: left !important;
+}/* تنسيق البطاقات بأحجام أصغر مع دعم الوضعين */
+.service__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* استبدال #1a1a1a بالمتغير المسؤول عن لون الحاويات */
+    background-color: var(--container-color); 
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    text-align: right;
+    direction: rtl;
+    /* إطار يتغير لونه بشكل خفيف حسب الوضع */
+    border: 1px solid var(--border-color, rgba(212, 175, 55, 0.1)); 
+    transition: background-color 0.4s, color 0.4s; /* نعومة عند التحويل */
+}
+
+/* حجم عنوان الخدمة */
+.service__name {
+    font-size: 0.95rem;
+    /* استبدال #fff بمتغير لون العناوين */
+    color: var(--title-color); 
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+/* حجم وصف الخدمة */
+.service__description {
+    font-size: 0.75rem;
+    /* استبدال #a6a6a6 بمتغير لون النصوص الفرعية */
+    color: var(--text-color); 
+    line-height: 1.4;
+}
+
+/* حجم الأيقونات */
+.service__icon {
+    font-size: 1.6rem;
+    color: #d4af37; /* اللون الذهبي يظل ثابتاً لأنه هوية البراند */
+    margin-left: 0.8rem;
+}
+
+/* إزالة الحدود والفراغات تماماً عن الصورة */
+.services__img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+}
+.skills__img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 450px; 
+    border: none !important; /* إلغاء الإطار الذهبي الذي كان يسبب الفراغ */
+    border-radius: 0.75rem; /* إبقاء زوايا الصورة ناعمة فقط */
+    display: block;
+    object-fit: cover;
+    box-shadow: none !important; /* إزالة أي ظلال قديمة */
+}
+@media screen and (max-width: 768px) {
+    /* إخفاء الصورة في الجوال لتوفير المساحة */
+    .services__img-container {
+        display: none;
+    }
+
+    /* توسيع قائمة الخدمات لتأخذ عرض الشاشة بالكامل */
+    .skills__container {
+        grid-template-columns: 1fr;
+        row-gap: 1.5rem;
+    }
+
+    /* تصغير العناوين لتناسب الشاشة الصغيرة */
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .skills__subtitle {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .skills__text {
+        font-size: 0.8rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    /* ضبط البطاقات لتكون مريحة للعين في الجوال */
+    .service__card {
+        padding: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .service__name {
+        font-size: 0.9rem;
+    }
+
+    .service__description {
+        font-size: 0.7rem;
+    }
+
+    .service__icon {
+        font-size: 1.4rem;
+    }
+}
+/* تنسيق نص الوصف ليظهر في المنتصف على الجوال */
+.fancybox__caption {
+    text-align: center !important;
+    direction: rtl; /* لضمان ظهور النقاط والفواصل العربي بشكل صحيح */
+}
+
+/* إذا كنت تريد النص يتغير مكانه حسب اللغة (يمين للعربي ويسار للإنجليزي) */
+[lang="ar"] .fancybox__caption {
+    text-align: center !important;
+}
+
+[lang="en"] .fancybox__caption {
+    text-align: center !important;
+}/* --- تعديل احترافي ليتطابق مع قسم خدماتي --- */
+.why__me.section {
+    text-align: center;
+}
+
+.why__me .section__title {
+    color: var(--first-color); /* اللون الذهبي */
+    margin-bottom: var(--mb-3);
+}
+
+.why__container {
+    display: grid;
+    grid-template-columns: 1fr; /* عمود واحد كما في الخدمات بالجوال */
+    justify-content: center;
+    row-gap: 1.5rem; /* نفس المسافة بين كروت الخدمات */
+}
+
+.why__item {
+    display: flex;
+    align-items: center;
+    background-color: var(--container-color);
+    padding: 1.5rem; /* حشو أكبر ليعطي فخامة */
+    border-radius: .75rem;
+    border: 1px solid rgba(212, 175, 55, 0.1); /* إطار رقيق */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ظل ناعم */
+    width: 90%; /* عرض مناسب للجوال */
+    max-width: 380px; /* ليطابق عرض كروت الخدمات */
+    margin: 0 auto;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.why__icon {
+    font-size: 2rem; /* أيقونة كبيرة وواضحة مثل الخدمات */
+    color: var(--first-color);
+}
+
+.why__text {
+    font-size: var(--h3-font-size); /* نفس حجم خط عناوين الخدمات */
+    font-weight: var(--font-semi-bold);
+    color: var(--title-color);
+}
+
+/* ضبط المسافات حسب اتجاه اللغة لضمان الاحترافية */
+[dir="rtl"] .why__icon {
+    margin-left: 1.25rem;
+    margin-right: 0;
+}
+
+[dir="ltr"] .why__icon {
+    margin-right: 1.25rem;
+    margin-left: 0;
+}
+
+/* تأثير التمرير ليعطي طابعاً تفاعلياً */
+.why__item:hover {
+    transform: translateY(-5px);
+    border-color: var(--first-color);
+    background-color: rgba(212, 175, 55, 0.05); /* تغيير خلفية خفيف جداً عند اللمس */
+}
+
+/* تنسيق خاص لشاشة S22 Ultra لضمان عدم تداخل النصوص */
+@media screen and (max-width: 350px) {
+    .why__item {
+        padding: 1rem;
+    }
+    .why__text {
+        font-size: 0.9rem;
+    }
+}/* --- ضبط محاذاة قسم الهوم للوسط في اللغتين --- */
+.home__data {
+    text-align: center; /* توسيط النصوص */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* توسيط العناصر (مثل الأزرار) */
+    justify-content: center;
+}
+
+.home__title, 
+.home__subtitle {
+    width: 100%;
+    text-align: center; /* ضمان بقاء العنوان والوصف في المنتصف */
+}
+
+/* ضبط زر التواصل ليكون في المنتصف */
+.home__data .button {
+    margin: 0 auto;
+    display: inline-block;
+}
+
+/* ضبط أيقونات التواصل الاجتماعي لتكون في المنتصف */
+.home__social {
+    justify-content: center;
+    display: flex;
+    gap: 1.5rem;
 }

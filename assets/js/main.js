@@ -48,26 +48,32 @@ const scrollActive = () =>{
     })
 }
 window.addEventListener('scroll', scrollActive)
-
 /*===== SCROLL REVEAL ANIMATION =====*/
 const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
     duration: 2000,
     delay: 200,
-//  reset: true
 });
 
-sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
-sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
-sr.reveal('.home__social-icon',{ interval: 200}); 
-sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200});
+/* 1. ظهور العناوين الرئيسية للأقسام */
+sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text, .why__title, .section-title, .section__title', {}); 
+
+/* 2. ظهور الصور والنصوص بتأخير بسيط */
+sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img', {delay: 400}); 
+
+/* 3. ظهور أيقونات التواصل الاجتماعي */
+sr.reveal('.home__social-icon', { interval: 200}); 
+
+/* 4. تفعيل الحركة للبطاقات والبنود (تمت إضافة .why__item هنا) */
+/* هذا السطر سيجعل كل بند في "لماذا تختارني" يظهر بتتابع جميل */
+sr.reveal('.skills__data, .work__img, .contact__input, .why__card, .service__card, .why__item', {interval: 200});
+
 /*==================== DARK LIGHT THEME ====================*/ 
 const themeButton = document.getElementById('theme-button')
 const lightTheme = 'light-theme'
-const iconTheme = 'bx-sun' // الأيقونة ستتحول لشمس عند الضغط
+const iconTheme = 'bx-sun' 
 
-// الكود يتحقق من اختيارك السابق (إذا كنت قد ضغطت عليه من قبل)
 const selectedTheme = localStorage.getItem('selected-theme')
 const selectedIcon = localStorage.getItem('selected-icon')
 
@@ -76,57 +82,51 @@ if (selectedTheme) {
   themeButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme)
 }
 
-// تفعيل وإلغاء الوضع يدوياً عند الضغط
 themeButton.addEventListener('click', () => {
     document.body.classList.toggle(lightTheme)
     themeButton.classList.toggle(iconTheme)
-    
-    // حفظ الوضع الحالي ليتذكره المتصفح
     localStorage.setItem('selected-theme', document.body.classList.contains(lightTheme) ? 'light' : 'dark')
     localStorage.setItem('selected-icon', themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon')
-})// ... (كود الثيم يبقى كما هو)
+})
+
 /* --- كود تبديل اللغة الاحترافي --- */
 const langBtn = document.getElementById('language-button');
 const langText = langBtn.querySelector('.lang-text');
 
 langBtn.addEventListener('click', () => {
-    // 1. فحص الاتجاه الحالي (إذا كان يمين يعني عربي)
     const isCurrentlyArabic = document.body.dir === 'rtl' || document.body.dir === '';
-    
-    // 2. تحديد اللغة الجديدة والاتجاه الجديد
     const newLang = isCurrentlyArabic ? 'en' : 'ar';
     const newDir = isCurrentlyArabic ? 'ltr' : 'rtl';
 
-    // 3. تطبيق التغيير على الصفحة
     document.body.dir = newDir;
     document.documentElement.lang = newLang;
-
-    // 4. تغيير نص الزر (يظهر EN عندما تكون الواجهة عربية والعكس)
     langText.textContent = isCurrentlyArabic ? 'AR' : 'EN';
 
-    // 5. تحديث النصوص (مع دعم الألوان والـ Placeholders)
     const elements = document.querySelectorAll('.translate, [data-en]');
     elements.forEach(el => {
         const newText = el.getAttribute(`data-${newLang}`);
         const newPlaceholder = el.getAttribute(`data-${newLang}-placeholder`);
 
-        // تحديث النصوص (العناوين، الأزرار، والفقرات)
         if (newText) {
-            // إذا كان العنصر زر إرسال نغير الـ value
-            if (el.tagName === 'INPUT' && el.type === 'button') {
+            if (el.tagName === 'INPUT' && (el.type === 'button' || el.type === 'submit')) {
                 el.value = newText;
             } else {
-                // استخدام innerHTML للحفاظ على الـ span الملون
                 el.innerHTML = newText;
             }
         }
 
-        // تحديث الـ Placeholder للحقول
         if (newPlaceholder) {
             el.setAttribute('placeholder', newPlaceholder);
         }
     });
 
-    // 6. ضبط الخطوط (Cairo للعربي و Poppins للإنجليزي)
-    document.body.style.fontFamily = isCurrentlyArabic ? "'Poppins', sans-serif" : "'Cairo', sans-serif";
+    const portfolioLinks = document.querySelectorAll('[data-fancybox]');
+    portfolioLinks.forEach(link => {
+        const arDesc = link.getAttribute('data-ar-val'); 
+        const enDesc = link.getAttribute('data-en-val');
+        if (newLang === 'ar' && arDesc) link.setAttribute('data-caption', arDesc);
+        else if (newLang === 'en' && enDesc) link.setAttribute('data-caption', enDesc);
+    });
+
+    document.body.style.fontFamily = (newLang === 'ar') ? "'Cairo', sans-serif" : "'Poppins', sans-serif";
 });
