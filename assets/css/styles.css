@@ -1,22 +1,25 @@
 /* تعريف خط Cairo */
 @font-face {
     font-family: 'Cairo';
-    src: url('../fonts/Cairo-Bold.ttf') format('truetype');
+    src: url('../fonts/Cairo-Bold.woff2') format('woff2');
     font-weight: bold;
+    font-display: swap;
 }
 
 /* تعريف خط Tajawal */
 @font-face {
     font-family: 'Tajawal';
-    src: url('../fonts/Tajawal-Regular.ttf') format('truetype');
+   src: url('/assets/fonts/Tajawal-Regular.woff2') format('woff2');
     font-weight: normal;
+    font-display: swap;
 }
 
 /* تعريف خط Poppins */
 @font-face {
     font-family: 'Poppins';
-    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+    src: url('../fonts/Poppins-Regular.woff2') format('woff2');
     font-weight: normal;
+    font-display: swap;
 }
 /*===== VARIABLES CSS =====*/
 :root {
