@@ -23,8 +23,7 @@ function linkAction(){
 }
 
 // إضافة المستمع لكل رابط
-navLink.forEach(n => n.addEventListener('click', linkAction))
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+navLink.forEach(n => n.addEventListener('click', linkAction))/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll('section[id]')
 
 const scrollActive = () =>{
@@ -34,10 +33,9 @@ const scrollActive = () =>{
         const sectionHeight = current.offsetHeight,
               sectionTop = current.offsetTop - 58,
               sectionId = current.getAttribute('id'),
-              // البحث عن الرابط
+              /* تم تعديل النقطة هنا: استخدام .nav_menu بدلاً من .nav__menu */
               sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
         
-        // التحقق من وجود الرابط قبل إضافة الكلاس (هذا هو الإصلاح)
         if(sectionsClass){
             if(scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight){
                 sectionsClass.classList.add('active-link')

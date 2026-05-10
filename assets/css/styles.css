@@ -1,7 +1,23 @@
-/*===== GOOGLE FONTS =====*/
-/* أضفت خط Cairo للفخامة و Tajawal للنصوص الطويلة */
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;700&display=swap");
+/* تعريف خط Cairo */
+@font-face {
+    font-family: 'Cairo';
+    src: url('../fonts/Cairo-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
 
+/* تعريف خط Tajawal */
+@font-face {
+    font-family: 'Tajawal';
+    src: url('../fonts/Tajawal-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+/* تعريف خط Poppins */
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
 /*===== VARIABLES CSS =====*/
 :root {
   --header-height: 3rem;
@@ -1184,69 +1200,38 @@ body.light-theme .work__card {
 .nav__link:hover::after, 
 .active-link::after {
     width: 100% !important; /* يتمدد بعرض الكلمة فقط */
-}/* --- عرض 3 بطائق احترافية في الهاتف --- */
+    
+}/* --- عرض 3 بطائق احترافية في الهاتف --- *//* --- عرض الأعمال صورتين بجانب بعض في الهاتف --- */
 @media screen and (max-width: 767px) {
     .work__container {
-        grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 0.35rem !important; /* مسافة صغيرة جداً بين البطائق */
-        padding: 0 0.2rem !important;
+        /* هذا السطر هو السر: يجعلها صورتين */
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 1rem !important; /* تقليل المسافة لتناسب حجم الشاشة */
+        padding: 0 0.5rem !important;
     }
 
     .work__card {
-        padding: 0.35rem !important; /* تقليل الحشو الداخلي للبطاقة */
-        border-radius: 0.6rem !important;
-        display: flex;
-        flex-direction: column;
-        height: 100%; /* توحيد الطول لجميع البطائق */
-        background-color: var(--container-color);
+        padding: 0.75rem !important; /* تقليل الحشو الداخلي للكارت */
+        border-radius: 1rem !important;
     }
 
     .work__img {
-        height: 65px !important; /* ارتفاع يتناسب مع عرض 3 بطائق */
-        border-radius: 0.4rem !important;
-        margin-bottom: 0.3rem !important;
+        height: 150px !important; /* تقليل الارتفاع ليتناسب مع العرض الصغير */
+        border-radius: 0.75rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
     .work__title {
-        font-size: 0.55rem !important; /* تصغير العنوان */
-        font-weight: 700 !important;
-        margin-bottom: 0.2rem !important;
-        line-height: 1.1;
+        font-size: 0.8rem !important; /* تصغير الخط لكي لا ينزل لسطرين */
+        margin-bottom: 0.25rem !important;
     }
 
-    .work__description {
-        display: block !important; /* إبقاء الوصف كما في صورتك */
-        font-size: 0.45rem !important; /* تصغير الوصف جداً ليناسب المساحة */
-        line-height: 1.2;
-        margin-bottom: 0.4rem !important;
-        color: var(--text-color);
-    }
-
-    /* تنسيق زر "عرض التفاصيل" الشفاف مثل الصورة */
     .work__button {
-        display: flex !important;
-        align-items: center;
-        justify-content: flex-start; /* محاذاة النص لليمين/اليسار حسب اللغة */
-        font-size: 0.5rem !important;
-        color: var(--first-color) !important; /* لون ذهبي أو اللون الأساسي */
-        background: none !important; /* شفاف كما في الصورة */
-        padding: 0 !important;
-        margin-top: auto; /* دفع الزر لأسفل البطاقة */
-    }
-
-    .work__button i {
         font-size: 0.7rem !important;
-        margin-right: 2px;
-        transition: 0.3s;
-    }
-
-    /* قلب السهم في وضع العربي ليكون صحيحاً */
-    [dir="rtl"] .work__button i {
-        transform: rotate(180deg);
-        margin-left: 2px;
-        margin-right: 0;
     }
 }
+
+
 /* للشاشات الكبيرة يظل كما هو 3 صور */
 @media screen and (min-width: 992px) {
     .work__container {
